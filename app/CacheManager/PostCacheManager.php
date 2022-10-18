@@ -3,7 +3,6 @@
 namespace App\CacheManager;
 
 use App\Models\Post;
-use Illuminate\Cache\Events\CacheHit;
 use Illuminate\Support\Facades\Cache;
 
 class PostCacheManager
