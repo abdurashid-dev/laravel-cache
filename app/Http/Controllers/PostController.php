@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\CacheManager\PostCacheManager;
 use App\Events\PostCreated;
+use App\Events\PostDeleted;
+use App\Events\PostUpdated;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Event;
@@ -79,21 +81,29 @@ class PostController extends Controller
      *
      * @param \Illuminate\Http\Request $request
      * @param \App\Models\Post $post
-     * @return \Illuminate\Http\Response
+     * @return Post
      */
     public function update(Request $request, Post $post)
     {
-        //
+        event(PostUpdated::class);
+        $data = $request->validate([
+            'title' => 'required',
+            'content' => 'required'
+        ]);
+        $post->update($data);
+        return $post;
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param \App\Models\Post $post
-     * @return \Illuminate\Http\Response
+     * @return Post
      */
     public function destroy(Post $post)
     {
-        //
+        event(PostDeleted::class);
+        $post->delete();
+        return $post;
     }
 }
