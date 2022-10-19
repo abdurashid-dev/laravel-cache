@@ -21,7 +21,7 @@ class PostDeleted
      */
     public function __construct()
     {
-        //
+        info('post delete event dispatched');
     }
 
     /**

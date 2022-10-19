@@ -21,7 +21,7 @@ class PostUpdated
      */
     public function __construct()
     {
-        //
+        info('post updated event dispatched');
     }
 
     /**

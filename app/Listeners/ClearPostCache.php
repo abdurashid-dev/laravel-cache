@@ -18,7 +18,7 @@ class ClearPostCache
         //
     }
 
-    public function handle()
+    public function handle($event)
     {
         info('Clear post listener triggered');
         PostCacheManager::clear();
