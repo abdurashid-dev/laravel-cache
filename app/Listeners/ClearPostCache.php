@@ -2,6 +2,7 @@
 
 namespace App\Listeners;
 
+use App\CacheManager\PostCacheManager;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 
@@ -17,14 +18,9 @@ class ClearPostCache
         //
     }
 
-    /**
-     * Handle the event.
-     *
-     * @param  object  $event
-     * @return void
-     */
-    public function handle($event)
+    public function handle()
     {
-        //
+        info('Clear post listener triggered');
+        PostCacheManager::clear();
     }
 }

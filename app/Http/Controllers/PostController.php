@@ -6,6 +6,7 @@ use App\CacheManager\PostCacheManager;
 use App\Events\PostCreated;
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Event;
 
 class PostController extends Controller
 {
@@ -44,6 +45,7 @@ class PostController extends Controller
             'title' => 'required',
             'content' => 'required'
         ]);
+
         $post = Post::create($data);
         return response()->json([
             'post' => $post
