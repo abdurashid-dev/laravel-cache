@@ -42,7 +42,6 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        event(new PostCreated);
         $data = $request->validate([
             'title' => 'required',
             'content' => 'required'
@@ -85,7 +84,6 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        event(new PostUpdated);
         $data = $request->validate([
             'title' => 'required',
             'content' => 'required'
@@ -102,7 +100,6 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        event(new PostDeleted());
         $post->delete();
         return $post;
     }
